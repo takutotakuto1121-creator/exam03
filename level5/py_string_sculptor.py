@@ -35,3 +35,31 @@
 
 # Similar to (probably): No clear direct LeetCode equivalent found; this is
 # a custom character-by-character formatting exercise.
+
+def string_sculptor(text: str) -> str:
+    flag = False
+    result = ""
+    for c in text:
+        if not flag and c.isalpha():
+            result += c.lower()
+            flag = True
+        elif flag and c.isalpha():
+            result += c.upper()
+            flag = False
+        elif c == " ":
+            result += c
+            flag = False
+        else:
+            result += c
+    return result
+
+
+if __name__ == "__main__":
+    print(string_sculptor("hello"))
+    print(string_sculptor("Hello World"))
+    print(string_sculptor("abc123def"))
+    print(string_sculptor("Python3.9!"))
+    print(string_sculptor("Python3.9!"))
+    print(string_sculptor(""))
+
+        
