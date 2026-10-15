@@ -46,3 +46,40 @@
 # Similar to (probably): LeetCode 20. Valid Parentheses (identical
 # problem).
 # Reference: question/leetcode/lc020_valid_parentheses.txt
+
+def bracket_validator(s: str) -> bool:
+    count1 = 0
+    count2 = 0
+    count3 = 0
+
+    for c in s:
+        if c == "(":
+            count1 += 1
+        elif c == ")":
+            count1 -= 1
+        elif c == "{":
+            count2 += 1
+        elif c == "}":
+            count2 -= 1
+        elif c == "[":
+            count3 += 1
+        elif c == "]":
+            count3 -= 1
+        else:
+            pass
+
+    if count1 == 0 and count2 == 0 and count3 == 0:
+        return True
+    else:
+        return False
+
+
+if __name__ == "__main__":
+    print(bracket_validator("()"))
+    print(bracket_validator("()[]{}"))
+    print(bracket_validator("(]"))
+    print(bracket_validator("([)]"))
+    print(bracket_validator("{[]}"))
+    print(bracket_validator("hello(world)"))
+    print(bracket_validator("((())"))
+    print(bracket_validator(""))
